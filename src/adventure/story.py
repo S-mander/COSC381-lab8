@@ -15,6 +15,8 @@ def get_random_colored_text(text: str) -> Text:
     color = random.choice(COLORS)
     return Text(text, style=color)
 
+default_message = "You stand still, unsure what to do. The forest swallows you."
+
 def step(choice: str, events):
     random_event = random.choice(events)
 
