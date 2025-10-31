@@ -23,15 +23,12 @@ def step(choice: str, events):
     elif choice == "right":
         return right_path(random_event)
     else:
-        # return a plain string so callers (and tests) can treat the result as text
-        return "You stand still, unsure what to do. The forest swallows you."
+        return f"You stand still, unsure what to do. The forest swallows you."
 
 def left_path(event):
-    # return a plain string; coloring is applied only when printing to console
     return f"You walk left. {event}"
 
 def right_path(event):
-    # return a plain string; coloring is applied only when printing to console
     return f"You walk right. {event}"
 
 if __name__ == "__main__":
@@ -39,10 +36,9 @@ if __name__ == "__main__":
 
     console.print("You wake up in a dark forest. You can go left or right.", style="bold magenta underline")
     while True:
-        choice = Prompt.ask("[cyan]Which direction do you choose? (left/right/exit): [/cyan]")
+        choice = Prompt.ask("[bold][cyan]Which direction do you choose? (left/right/exit): [/cyan][/bold]")
         choice = choice.strip().lower()
         if choice == 'exit':
             break
         
-        # color each printed output randomly while keeping step() return values as strings
         console.print(get_random_colored_text(step(choice, events)))
